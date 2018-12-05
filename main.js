@@ -170,11 +170,11 @@ var app = new Vue({
                 if (this.h > this.w) {
                     this.isMobileLandscape = false;
                     this.isMobilePortrait = true;
-                    this.setCSS('banner-h', '200px');
+                    // this.setCSS('banner-h', '200px');
                 } else {
                     this.isMobileLandscape = true;
                     this.isMobilePortrait = false;
-                    this.setCSS('banner-h', '400px');
+                    // this.setCSS('banner-h', '400px');
 
                 }
                 this.isDesktop = false;

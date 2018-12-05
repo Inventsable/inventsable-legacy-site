@@ -107,7 +107,8 @@
     position: absolute;
     top: 0;
     width: 100%;
-    height: var(--banner-h);
+    /* height: var(--banner-h); */
+    height: 800px;
     display: grid;
     grid-template-rows: 6fr 2fr 0fr 2fr 5fr;
     user-select: none;
@@ -182,7 +183,8 @@
 @media (max-width: 767px) {
     .banner {
         /* background: url('demo.png') center center / cover no-repeat; */
-        background: url('https://thumbs.gfycat.com/ThatThirdHumpbackwhale-size_restricted.gif') center center / 120% no-repeat;
+        background: url('https://thumbs.gfycat.com/ThatThirdHumpbackwhale-size_restricted.gif') center center / cover no-repeat;
+        height: 200px;
     }
 
     .fullscreen-bg__video {
@@ -191,6 +193,7 @@
 
     .banner-anno {
         grid-template-rows: 6fr 2fr 0fr 2fr 5fr;
+        height: 200px;
     }
     .banner-title {
         font-size: 10vw;
@@ -200,11 +203,14 @@
 @media (max-width: 367px) {
     .banner {
         /* background: url('demo.png') center center / cover no-repeat; */
-        background: url('https://thumbs.gfycat.com/FavoriteRadiantKoi-size_restricted.gif') center center / contain no-repeat;
+        background: url('https://thumbs.gfycat.com/FavoriteRadiantKoi-size_restricted.gif') center center / cover no-repeat;
+        display: flex;
+        align-items: flex-start;
     }
 
     .banner-anno {
         grid-template-rows: 6fr 2fr 0fr 2fr 5fr;
+        height: 200px;
     }
     .banner-title {
         font-size: 10vw;
