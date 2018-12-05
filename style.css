@@ -180,11 +180,31 @@
 	    transform: translate(-50%, -50%);
 }
 
+.content {
+	width: 100%;
+	position: relative;
+    /* top: calc(var(--banner-h) + var(--toolbar-h)); */
+   	/* top: calc(800px + var(--toolbar-h)); */
+	background-color: var(--color-bg);
+	height: 1500px; /* Demo purposes */
+}
+
+
+@media (min-width: 768px) {
+    .content {
+        top: 840px;
+    }
+}
+
 @media (max-width: 767px) {
     .banner {
         /* background: url('demo.png') center center / cover no-repeat; */
         background: url('https://thumbs.gfycat.com/ThatThirdHumpbackwhale-size_restricted.gif') center center / cover no-repeat;
-        height: 200px;
+        height: 20vh;
+    }
+
+    .content {
+       	top: 240px;
     }
 
     .fullscreen-bg__video {
@@ -193,7 +213,7 @@
 
     .banner-anno {
         grid-template-rows: 6fr 2fr 0fr 2fr 5fr;
-        height: 200px;
+        height: 20vh;
     }
     .banner-title {
         font-size: 10vw;
@@ -201,26 +221,25 @@
 }
 
 @media (max-width: 367px) {
+    .content {
+       	top: 240px;
+    }
+
     .banner {
         /* background: url('demo.png') center center / cover no-repeat; */
         background: url('https://thumbs.gfycat.com/FavoriteRadiantKoi-size_restricted.gif') center center / cover no-repeat;
-        display: flex;
-        align-items: flex-start;
+        height: 40vh;
+        /* display: flex; */
+        /* align-items: flex-start; */
     }
 
     .banner-anno {
         grid-template-rows: 6fr 2fr 0fr 2fr 5fr;
-        height: 200px;
+        height: 40vh;
     }
     .banner-title {
         font-size: 10vw;
     }
 }
 
-.content {
-	width: 100%;
-	position: relative;
-	top: calc(var(--banner-h) + var(--toolbar-h));
-	background-color: var(--color-bg);
-	height: 1500px; /* Demo purposes */
-}
+
