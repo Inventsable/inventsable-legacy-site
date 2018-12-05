@@ -157,6 +157,7 @@ var app = new Vue({
         h: document.documentElement.clientHeight,
     },
     mounted() {
+        this.handleResize(null);
         window.addEventListener('resize', this.handleResize);
     },
     methods: {
