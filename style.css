@@ -11,17 +11,23 @@
     --color-white: rgb(255, 255, 255);
     --color-bg: rgb(243, 243, 243);
     --color-deep: rgb(14, 30, 37);
-    --color-tab-active: #229990;
+    --color-tab-active: rgb(34, 153, 144);
+    --color-tab-fade: rgba(34, 153, 144, .35);
+
+    --color-text-title: rgb(28, 64, 89);
+    --color-text-sub: rgb(5, 45, 73);
     font-size: 12px;
     --grid-gap: 1%;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     transition: all 80ms var(--quart) 20ms;
+    overflow-x: hidden;
 }
 
 
 .header {
     box-sizing: border-box;
-	position: fixed;
+    position: fixed;
+    font-family: 'Roboto';
     width: 100%;
     height: var(--toolbar-h);
     padding: 0px .5rem;
@@ -60,7 +66,12 @@
      background-color 80ms var(--quint) 20ms;
 }
 
-.tab-line {
+.tab-body:hover > .tab-main-idle {
+    color: var(--color-tab-fade);
+}
+
+
+[class^="tab-line-"] {
     border-width: 2px;
     transition: border-color 80ms var(--quint) 20ms;
 }
@@ -115,9 +126,52 @@
 .banner-title {
     font-family: 'Bree-Serif';
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* display: grid; */
+    /* grid-template-columns: 10fr 1fr; */
     font-size: 11rem;
     color: white;
     width: 100%;
+}
+
+.welcome-card {
+    font-family: 'Roboto';
+    margin: 2rem 1rem;
+    padding: 5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: 
+    background-color: white;
+    box-shadow: rgba(5, 5, 5, 0.065) 0px 2px 0px 0px;
+}
+
+.welcome-full {
+    border-color: var(--color-tab-active);
+    border-width: 0px 0px 2px 0px;
+    border-style: solid;
+}
+
+.welcome-title {
+    color: var(--color-tab-active);
+    padding-bottom: 1rem;
+}
+
+.cc {
+    margin: 1rem 0px 0px 1rem;
+    font-family: 'Roboto';
+    font-size: 1.75rem;
+    width: 2.7rem;
+    height: 2.7rem;
+    border: 2px solid white;
+    border-radius: 2.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: .5rem; */
 }
 
 
@@ -176,6 +230,95 @@
 }
 
 
+.preview-list {
+    box-sizing: border-box;
+    /* border: 2px solid blue; */
+    margin-top: 1rem;
+    padding: 2rem 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.preview-main {
+    /* border: 2px solid red; */
+    display: grid;
+    grid-template-rows: 2fr 5fr 1fr;
+    grid-row-gap: .4rem;
+    background-color: white;
+    min-height: 30px;
+    width: 40%;
+    border-radius: 10px;
+    /* box-shadow: rgba(0,0,0,0.2) 0px 5px 2px; */
+}
+
+.preview-title-main {
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.preview-title-version {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.preview-title-top {
+    font-family: 'Raleway';
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    color: var(--color-text-title);
+    
+}
+
+.preview-title-sub {
+    font-family: 'Roboto';
+    color: var(--color-text-sub);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.preview-title {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding: 0px 1rem;
+}
+
+.preview-body {
+    display: grid;
+    grid-template-columns: 2fr 7fr;
+    width: 100%;
+    padding: 0px 1rem;
+}
+
+.preview-body-L {
+    width: 200px;
+    height: 200px;
+    background: url('https://via.placeholder.com/200') center center / contain no-repeat;
+    /* background: url('https://thumbs.gfycat.com/ImpossibleSeparateDassierat-size_restricted.gif') center center / contain no-repeat; */
+}
+
+.preview-bottom {
+    width: 100%;
+    background-color: var(--color-bg);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: .4rem;
+}
+
+[class^="preview-bottom-"] {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 @media screen 
     and (orientation: landscape)
@@ -222,6 +365,7 @@
         height: 310px;
     }
     .banner-title {
+
         font-size: 10vw;
     }
 }

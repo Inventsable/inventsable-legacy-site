@@ -6,7 +6,8 @@ Vue.component('site', {
             <toolbar/>
             <banner></banner>
             <div class="content">
-                <dummytext />
+                <welcome></welcome>
+                <preview-list v-if="false"></preview-list>
             </div>
         </div>
     `,
@@ -20,15 +21,26 @@ Vue.component('site', {
     }
 })
 
+Vue.component('welcome', {
+    template: `
+        <div class="welcome-card">
+            <div class="welcome-full">
+                <div class="welcome-title">Open source Adobe panels by you and me</div>
+                <div class="welcome-line"></div>
+            </div>
+        </div>
+    `
+})
+
 Vue.component('tab-list', {
     template: `
         <div class="tabs">
             <div 
                 v-for="tab in tabs"
                 class="tab-body"
-                @click="selectTab(tab)">
+                @click="selectTab(tab)" @mouseover="hoverTab(tab)" @mouseout="hoverOutTab(tab)">
                     <div :class="getTabClass(tab)">{{tab.name}}</div>
-                    <div class="tab-line" :style="getLineStyle(tab)"></div>
+                    <div :class="getLineClass(tab)" :style="getLineStyle(tab)"></div>
             </div>
         </div>
     `,
@@ -38,19 +50,28 @@ Vue.component('tab-list', {
                 {
                     name: 'Home',
                     active: true,
+                    hover: false,
                 },
                 {
                     name: 'Panels',
                     active: false,
+                    hover: false,
                 },
                 {
                     name: 'Tutorials',
                     active: false,
+                    hover: false,
                 }
             ]
         }
     },
     methods: {
+        hoverTab(tab) {
+            tab.hover = true;
+        },
+        hoverOutTab(tab) {
+            tab.hover = false;
+        },
         getTabClass(tab) {
             var style = '';
             if (tab.active) {
@@ -60,10 +81,21 @@ Vue.component('tab-list', {
             }
             return style;
         },
+        getLineClass(tab) {
+            var style = '';
+            if (tab.active) {
+                style = 'tab-line-active'
+            } else {
+                style = 'tab-line-idle'
+            }
+            return style;
+        },
         getLineStyle(tab) {
             var style = 'border-style:solid;';
             if (tab.active) {
                 style += 'border-color:' + this.$root.getCSS('color-tab-active');
+            } else if (tab.hover) {
+                style += 'border-color:' + this.$root.getCSS('color-tab-fade');
             } else {
                 style += 'border-color:transparent;'
             }
@@ -92,7 +124,10 @@ Vue.component('banner', {
             </div>
             <div class="banner-anno">
                 <div></div>
-                <div class="banner-title centered">in·vents·a·ble</div>
+                <div class="banner-title">
+                <div class="centered">in·vents·a·ble.cc</div>
+                <div v-if="hasAnno" class="cc">cc</div>
+                </div>
                 <div></div> 
                 <div v-if="hasAnno" class="banner-subtitle centered">Custom open source Adobe panels</div>
                 <div></div>
@@ -133,18 +168,42 @@ Vue.component('toolbar', {
     }
 })
 
-Vue.component('dummytext', {
+Vue.component('preview-list', {   
     template: `
-        <div class="dummy">
-            <p></p>
+        <div class="preview-list">
+            <div class="preview-main">
+                <div class="preview-title">
+                    <div class="preview-title-top">
+                        <div class="preview-title-main">Color History</div>
+                        <div class="preview-title-version">1.0.0</div>
+                    </div>
+                    <div class="preview-title-sub">Jiesi Huang and Tom Scharstein</div>
+                </div>
+                <div class="preview-body">
+                    <div class="preview-body-L"></div>
+                    <div class="preview-body-R">
+                        <div class="preview-body-anno"></div>
+                    </div>
+                </div>
+                <div class="preview-bottom">
+                    <a class="preview-bottom-L" href="protoColors1.01.zxp" download>DOWNLOAD</a>
+                    <div class="preview-bottom-C">DEMO</div>
+                    <div class="preview-bottom-R">GITHUB</div>
+                </div>
+            </div>
         </div>
     `,
     data() {
         return {
-            msg: `test`
+            msg: 'Hello'
         }
+    },
+    mounted() {
+        console.log(this.msg)
     }
 })
+
+
 
 var app = new Vue({
     el: '#app',
