@@ -183,7 +183,7 @@
     
     .banner {
         background: url('https://thumbs.gfycat.com/ThatThirdHumpbackwhale-size_restricted.gif') center center / cover no-repeat;
-        height: 300px;
+        height: 310px;
         top: 30px;
     }
 
@@ -210,7 +210,7 @@
     }
 
     .content {
-       	top: 330px;
+       	top: 340px;
     }
 
     .fullscreen-bg__video {
@@ -219,7 +219,7 @@
 
     .banner-anno {
         grid-template-rows: 6fr 2fr 0fr 2fr 5fr;
-        height: 300px;
+        height: 310px;
     }
     .banner-title {
         font-size: 10vw;
