@@ -61,7 +61,7 @@ Vue.component('tab-list', {
             return style;
         },
         getLineStyle(tab) {
-            var style = 'border-width:2px;border-style:solid;';
+            var style = 'border-style:solid;';
             if (tab.active) {
                 style += 'border-color:' + this.$root.getCSS('color-tab-active');
             } else {

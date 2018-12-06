@@ -2,9 +2,10 @@
     --quart: cubic-bezier(0.76, 0.00, 0.24, 1.00);
     --quad: cubic-bezier(0.48, 0.04, 0.52, 0.96);
     --quint: cubic-bezier(0.84, 0.00, 0.16, 1.00);
-    --toolbar-h: 40px;
-    --banner-h: 800px;
-    
+
+    --toolbar-h: 40px;  /* not in use */
+    --banner-h: 800px;  /* not in use */
+
     --color-title-blue: rgb(60, 100, 194);
     --color-border: rgb(225, 225, 225);
     --color-white: rgb(255, 255, 255);
@@ -26,7 +27,6 @@
     padding: 0px .5rem;
     border-style: solid;
     border-color: var(--color-border);
-    /* border-width: 0px 0px 2px 0px; */
     box-shadow: rgba(5, 5, 5, 0.065) 0px 2px 0px 0px;
 	background-color: rgb(255, 255, 255);
     z-index: 10;
@@ -38,21 +38,13 @@
 
 .tabs {
     user-select: none;
-    /* border: 2px solid red; */
-    /* display: flex;
-    flex-wrap: nowrap;
-    justify-content: center; */
     min-width: 50%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: .25rem;
-    /* height: var(--) */
-    /* align-items: center; */
     cursor: pointer;
 }
 
 .tab-body {
-    /* padding: 0px 1rem; */
     height: var(--toolbar-h);
     display: grid;
     grid-template-rows: 8fr 1fr;
@@ -69,34 +61,30 @@
 }
 
 .tab-line {
+    border-width: 2px;
     transition: border-color 80ms var(--quint) 20ms;
 }
 
 .tab-main-active {
     color: var(--color-tab-active);
-    /* background-color: red; */
 }
 
 .tab-main-idle {
     color: var(--color-border);
-    /* background-color: transparent; */
 }
 
 .logo {
     width: calc(var(--toolbar-h) - 4px);
     height: calc(var(--toolbar-h) - 4px);
-    /* border: 2px solid red; */
     border-radius: 1rem;
     background-image: url("https://i.imgur.com/eryxWD2.gif");
     background-size: contain;
     background-repeat: no-repeat;
-    /* box-sha */
-    /* box-shadow: red 5px; */
 }
 
 .banner {
 	width: 100%;
-	height: var(--banner-h);
+	height: 800px;
 	position: fixed;
 	top: var(--toolbar-h);
 	background-color: var(--color-deep);
@@ -107,7 +95,6 @@
     position: absolute;
     top: 0;
     width: 100%;
-    /* height: var(--banner-h); */
     height: 800px;
     display: grid;
     grid-template-rows: 6fr 2fr 0fr 2fr 5fr;
@@ -115,7 +102,6 @@
 }
 
 .anno-grid {
-    /* border: 2px solid red; */
     display: grid;
     grid-template-columns: 1fr;
 }
@@ -138,7 +124,6 @@
 .banner-subtitle {
     font-family: 'Roboto';
     position: relative;
-    /* margin-top: 1rem; */
     font-size: 3rem;
     color: white;
     width: 100%;
@@ -182,29 +167,50 @@
 
 .content {
 	width: 100%;
-	position: relative;
+	position: absolute;
     /* top: calc(var(--banner-h) + var(--toolbar-h)); */
-   	/* top: calc(800px + var(--toolbar-h)); */
+    /* top: calc(800px + var(--toolbar-h)); */
+    top: 840px;
 	background-color: var(--color-bg);
-	height: 1500px; /* Demo purposes */
+	height: 1500px;
 }
 
 
-@media (min-width: 768px) {
-    .content {
-        top: 840px;
-    }
-}
 
-@media (max-width: 767px) {
+@media screen 
+    and (orientation: landscape)
+    and (max-width:760px) {
+    
     .banner {
-        /* background: url('demo.png') center center / cover no-repeat; */
         background: url('https://thumbs.gfycat.com/ThatThirdHumpbackwhale-size_restricted.gif') center center / cover no-repeat;
-        height: 20vh;
+        height: 300px;
+        top: 30px;
+    }
+
+    .logo {
+        width: 26px;
+        height: 26px;
+    }
+
+    .tab-body, .header {
+        height: 30px;
+    }
+    .tab-body {
+        grid-template-rows: 7fr 1fr;
+    }
+
+    .tab-line {
+        box-sizing: content-box;
+        height: 0px;
+        border-width: 2px;
+    }
+
+    [class^="tab-main"] {
+        font-size: 1rem;
     }
 
     .content {
-       	top: 240px;
+       	top: 330px;
     }
 
     .fullscreen-bg__video {
@@ -213,29 +219,50 @@
 
     .banner-anno {
         grid-template-rows: 6fr 2fr 0fr 2fr 5fr;
-        height: 20vh;
+        height: 300px;
     }
     .banner-title {
         font-size: 10vw;
     }
 }
 
-@media (max-width: 367px) {
+@media only screen 
+    and (orientation: portrait)
+    and (max-width:400px) {
     .content {
        	top: 240px;
     }
+    .fullscreen-bg__video {
+        display: none;
+    }
+    [class^="tab-main"] {
+        font-size: 1rem;
+    }
+
+    .logo {
+        width: 26px;
+        height: 26px;
+    }
+
+    .tab-body, .header {
+        height: 30px;
+    }
+    .tab-body {
+        grid-template-rows: 7fr 1fr;
+    }
 
     .banner {
-        /* background: url('demo.png') center center / cover no-repeat; */
-        background: url('https://thumbs.gfycat.com/FavoriteRadiantKoi-size_restricted.gif') center center / cover no-repeat;
-        height: 40vh;
-        /* display: flex; */
-        /* align-items: flex-start; */
+        background: url('https://thumbs.gfycat.com/FavoriteRadiantKoi-size_restricted.gif') center center / 100% no-repeat;
+        height: 200px;
+        display: flex;
+        align-items: flex-start;
+        top: 30px;
+
     }
 
     .banner-anno {
         grid-template-rows: 6fr 2fr 0fr 2fr 5fr;
-        height: 40vh;
+        height: 200px;
     }
     .banner-title {
         font-size: 10vw;
