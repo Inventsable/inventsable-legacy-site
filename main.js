@@ -2,24 +2,130 @@ window.Event = new Vue();
 
 Vue.component('site', {
     template: `
-        <div>
+        <div class="fullsite">
             <toolbar/>
-            <banner></banner>
-            <div class="content">
-                <welcome></welcome>
-                <preview-list v-if="false"></preview-list>
-            </div>
+            <banner v-if="!alt"/>
+            <torso>
+                <welcome v-if="!alt"></welcome>
+                <preview-list :model="panels"></preview-list>
+            </torso>
         </div>
     `,
     data() {
         return {
-            msg: 'Hello app'
+            alt: true,
+            msg: 'Hello app',
+            panels: [
+                {
+                    name: 'Color History',
+                    patron: ['Jiesi Huang'],
+                    details: 'Dynamic colors swatches with recent history',
+                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                    file: 'builds/protoColors1.05.zxp',
+                    links: {
+                        github: 'https://github.com/Inventsable/protoColors',
+                        demo: 'https://github.com/Inventsable/protoColors', 
+                    },
+                    range: '2017+',
+                    apps: [
+                        { appName: 'ILST', status: 'stable' },
+                        { appName: 'PHXS', status: 'stable' },
+                        { appName: 'AEFT', status: 'unstable' },
+                    ],
+                },
+                {
+                    name: 'Scribe',
+                    patron: ['r/AdobeIllustrator'],
+                    details: 'Dynamic colors swatches with recent history',
+                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                    file: 'builds/Scribe1.01.zxp',
+                    links: {
+                        github: 'https://github.com/Inventsable/protoColors',
+                        demo: 'https://github.com/Inventsable/protoColors',
+                    },
+                    range: '2017+',
+                    apps: [
+                        { appName: 'ILST', status: 'unstable' },
+                        { appName: 'PHXS', status: 'unstable' },
+                    ],
+                },
+                {
+                    name: 'Smart Align',
+                    patron: ['Herman van Boeijen'],
+                    details: 'Dynamic colors swatches with recent history',
+                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                    file: 'builds/Smart-Align1.01.zxp',
+                    links: {
+                        github: 'https://github.com/Inventsable/protoColors',
+                        demo: 'https://github.com/Inventsable/protoColors',
+                    },
+                    range: '2017+',
+                    apps: [
+                        { appName: 'ILST', status: 'stable' },
+                    ],
+                },
+                {
+                    name: 'Nimbling SSR 30',
+                    patron: ['Herman van Boeijen'],
+                    details: 'Dynamic colors swatches with recent history',
+                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                    file: 'builds/axo1.00.zxp',
+                    links: {
+                        github: 'https://github.com/Inventsable/axo',
+                        demo: 'https://github.com/Inventsable/axo',
+                    },
+                    range: '2017+',
+                    apps: [
+                        { appName: 'ILST', status: 'stable' },
+                    ],
+                },
+                {
+                    name: 'MightyFolders',
+                    patron: ['Vasily Hall'],
+                    details: 'Dynamic colors swatches with recent history',
+                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                    file: 'builds/mightyFolders1.00.zxp',
+                    links: {
+                        github: 'https://github.com/Inventsable/mightyFolders',
+                        demo: 'https://github.com/Inventsable/mightyFolders',
+                    },
+                    range: '2017+',
+                    apps: [
+                        { appName: 'ILST', status: 'stable' },
+                    ],
+                },
+                {
+                    name: 'Playwrite',
+                    patron: [],
+                    details: 'Dynamic colors swatches with recent history',
+                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                    file: 'builds/axo1.00.zxp',
+                    links: {
+                        github: 'https://github.com/Inventsable/playwrite',
+                        demo: '',
+                    },
+                    range: '2017+',
+                    apps: [
+                        { appName: 'ILST', status: 'stable' },
+                    ],
+                },
+            ]
         }
     },
     mounted() {
         console.log(this.msg)
     }
 })
+
+Vue.component('torso', {
+    template: `
+        <div class="content">
+            <slot></slot>
+        </div>
+    `
+})
+
+
 
 Vue.component('welcome', {
     template: `
@@ -125,7 +231,7 @@ Vue.component('banner', {
             <div class="banner-anno">
                 <div></div>
                 <div class="banner-title">
-                <div class="centered">in·vents·a·ble.cc</div>
+                <div class="centered">in·vents·a·ble</div>
                 <div v-if="hasAnno" class="cc">cc</div>
                 </div>
                 <div></div> 
@@ -168,29 +274,13 @@ Vue.component('toolbar', {
     }
 })
 
-Vue.component('preview-list', {   
+Vue.component('preview-list', {
+    props: {
+        model: Array,
+    },
     template: `
         <div class="preview-list">
-            <div class="preview-main">
-                <div class="preview-title">
-                    <div class="preview-title-top">
-                        <div class="preview-title-main">Color History</div>
-                        <div class="preview-title-version">1.0.0</div>
-                    </div>
-                    <div class="preview-title-sub">Jiesi Huang and Tom Scharstein</div>
-                </div>
-                <div class="preview-body">
-                    <div class="preview-body-L"></div>
-                    <div class="preview-body-R">
-                        <div class="preview-body-anno"></div>
-                    </div>
-                </div>
-                <div class="preview-bottom">
-                    <a class="preview-bottom-L" href="protoColors1.01.zxp" download>DOWNLOAD</a>
-                    <div class="preview-bottom-C">DEMO</div>
-                    <div class="preview-bottom-R">GITHUB</div>
-                </div>
-            </div>
+            <preview-app v-for="(app, key) in model" :key="app.name" :model="app"></preview-app>
         </div>
     `,
     data() {
@@ -198,11 +288,119 @@ Vue.component('preview-list', {
             msg: 'Hello'
         }
     },
+
+})
+
+Vue.component('preview-app', {
+    props: {
+        model: Object,
+    },
+    template: `
+        <div class="preview-main">
+            <div class="card-header">
+                <div class="preview-title">
+                    <div class="preview-title-top">
+                        <div class="preview-title-main">{{model.name}}</div>
+                        <div v-if="!alt" class="preview-title-version">{{buildNumber}}</div>
+                    </div>
+                    <div class="preview-title-sub">{{authors}}</div>
+                </div>
+            </div>
+            <div class="preview-body">
+                <div class="preview-body-L">
+                    <div class="preview-wrapper">
+                        <placeholder w="200" h="200" />
+                    </div>
+                    <div class="preview-wrapper">
+                        <placeholder w="200" h="200" />
+                    </div>
+                </div>
+                <div class="preview-body-R">
+                    <div class="preview-details">
+                        <div class="detail-subtitle">{{details}}</div>
+                        <ul class="feature-list">
+                            <li v-for="(item,key) in model.features" class="list-feature">{{item}}</li>
+                        </ul>
+                    </div>
+                    <div class="preview-links">
+                        <a class="preview-links-L" :href="model.file" download>
+                            <icon type="s" name="download"></icon>
+                        </a>
+                        <a v-if="!alt" class="preview-links-C" :href="model.links.demo" target="_blank">
+                            <icon type="s" name="gamepad"></icon>
+                        </a>
+                        <a class="preview-links-R" :href="model.links.github" target="_blank">
+                            <icon type="b" name="github"></icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `,
+    data() {
+        return {
+            alt: true,
+        }
+    },
+    computed: {
+        buildNumber: function() {
+            let match = this.model.file.match(/\d\.\d{2}(?=\.zxp)/);
+            return match[0];
+        },
+        authors: function () {
+            if (this.model.patron.length) {
+                return `${this.model.patron} and Tom Scharstein`
+            } else {
+                return `Tom Scharstein`
+            }
+        },
+        details: function () {
+            if (this.model.details.length) {
+                // return `${this.model.details.join(',')} and Tom Scharstein`
+            // } else {
+                return this.model.details;
+            }
+        }
+    },
     mounted() {
-        console.log(this.msg)
+        console.log('Previewing:')
+        console.log(this.model)
     }
 })
 
+Vue.component('placeholder', {
+    props: {
+        w: String,
+        h: String,
+    },
+    template: `
+        <div :style="getPlaceholderStyle()"></div>
+    `,
+    methods: {
+        getPlaceholderStyle() {
+            let url = `https://via.placeholder.com/${this.w}x${this.h}`;
+            return `width:${this.w}px;height:${this.h}px;background: url('${url}') center center / contain no-repeat;`;
+        }
+    }
+})
+
+Vue.component('icon', {
+    props: {
+        name: String,
+        type: String,
+    },
+    template: `
+        <span :class="getIconClass()"></span>
+    `,
+    methods: {
+        getIconClass() {
+            return `fa${this.type} fa-lg fa-${this.name}`
+        }
+    },
+    mounted() {
+        console.log(`icon is ${this.name}`)
+    }
+})
 
 
 var app = new Vue({
