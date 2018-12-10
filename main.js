@@ -79,36 +79,36 @@ Vue.component('site', {
                         { appName: 'ILST', status: 'stable' },
                     ],
                 },
-                {
-                    name: 'MightyFolders',
-                    patron: ['Vasily Hall'],
-                    details: 'Dynamic colors swatches with recent history',
-                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
-                    file: 'builds/mightyFolders1.00.zxp',
-                    links: {
-                        github: 'https://github.com/Inventsable/mightyFolders',
-                        demo: 'https://github.com/Inventsable/mightyFolders',
-                    },
-                    range: '2017+',
-                    apps: [
-                        { appName: 'ILST', status: 'stable' },
-                    ],
-                },
-                {
-                    name: 'Playwrite',
-                    patron: [],
-                    details: 'Dynamic colors swatches with recent history',
-                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
-                    file: 'builds/axo1.00.zxp',
-                    links: {
-                        github: 'https://github.com/Inventsable/playwrite',
-                        demo: '',
-                    },
-                    range: '2017+',
-                    apps: [
-                        { appName: 'ILST', status: 'stable' },
-                    ],
-                },
+                // {
+                //     name: 'MightyFolders',
+                //     patron: ['Vasily Hall'],
+                //     details: 'Dynamic colors swatches with recent history',
+                //     features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                //     file: 'builds/mightyFolders1.00.zxp',
+                //     links: {
+                //         github: 'https://github.com/Inventsable/mightyFolders',
+                //         demo: 'https://github.com/Inventsable/mightyFolders',
+                //     },
+                //     range: '2017+',
+                //     apps: [
+                //         { appName: 'ILST', status: 'stable' },
+                //     ],
+                // },
+                // {
+                //     name: 'Playwrite',
+                //     patron: [],
+                //     details: 'Dynamic colors swatches with recent history',
+                //     features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                //     file: 'builds/axo1.00.zxp',
+                //     links: {
+                //         github: 'https://github.com/Inventsable/playwrite',
+                //         demo: '',
+                //     },
+                //     range: '2017+',
+                //     apps: [
+                //         { appName: 'ILST', status: 'stable' },
+                //     ],
+                // },
             ]
         }
     },
@@ -124,6 +124,8 @@ Vue.component('torso', {
         </div>
     `
 })
+
+
 
 
 
@@ -261,15 +263,22 @@ Vue.component('banner', {
 })
 
 Vue.component('toolbar', {
+    // <div class="logo" :style="getLogoStyle()"></div>
     template: `
         <div class="header">
-            <div class="logo"></div>
+            <icon type="infi" />
             <tab-list></tab-list>
         </div>
     `,
     data() {
         return {
 
+        }
+    },
+    methods: {
+        getLogoStyle() {
+            // return `background-image: url("https://i.imgur.com/eryxWD2.gif");`
+            return `background-image: url("https://via.placeholder.com/30x30/434343/b7b7b7?text=logo");`
         }
     }
 })
@@ -309,10 +318,10 @@ Vue.component('preview-app', {
             <div class="preview-body">
                 <div class="preview-body-L">
                     <div class="preview-wrapper">
-                        <placeholder w="200" h="200" />
+                        <placeholder :name="model.name" w="200" h="200" />
                     </div>
                     <div class="preview-wrapper">
-                        <placeholder w="200" h="200" />
+                        <placeholder :name="model.name" w="200" h="200" />
                     </div>
                 </div>
                 <div class="preview-body-R">
@@ -324,13 +333,10 @@ Vue.component('preview-app', {
                     </div>
                     <div class="preview-links">
                         <a class="preview-links-L" :href="model.file" download>
-                            <icon type="s" name="download"></icon>
-                        </a>
-                        <a v-if="!alt" class="preview-links-C" :href="model.links.demo" target="_blank">
-                            <icon type="s" name="gamepad"></icon>
+                             <icon type="download" detail="Download as a .ZXP"></icon>
                         </a>
                         <a class="preview-links-R" :href="model.links.github" target="_blank">
-                            <icon type="b" name="github"></icon>
+                            <icon type="user" detail="Go to Github"></icon>
                         </a>
                     </div>
                 </div>
@@ -372,13 +378,15 @@ Vue.component('placeholder', {
     props: {
         w: String,
         h: String,
+        name: String,
     },
     template: `
         <div :style="getPlaceholderStyle()"></div>
     `,
     methods: {
         getPlaceholderStyle() {
-            let url = `https://via.placeholder.com/${this.w}x${this.h}`;
+            // let altUrl = 'https://via.placeholder.com/150/0000FF/808080 ?Text=Digital.com C/O https://placeholder.com/'
+            let url = `https://via.placeholder.com/${this.w}x${this.h}/434343/b7b7b7?text=${this.name}`;
             return `width:${this.w}px;height:${this.h}px;background: url('${url}') center center / contain no-repeat;`;
         }
     }
@@ -386,21 +394,57 @@ Vue.component('placeholder', {
 
 Vue.component('icon', {
     props: {
-        name: String,
+        detail: String,
         type: String,
+        parent: String,
+        which: String,
+        canceller: String,
     },
     template: `
-        <span :class="getIconClass()"></span>
-    `,
-    methods: {
-        getIconClass() {
-            return `fa${this.type} fa-lg fa-${this.name}`
+    <div 
+      :class="type == 'cancel' ? 'icon-cancel' : 'icon'" 
+      @mouseover="hover = true" 
+      @mouseout="hover = false" 
+      @click="testBtn(type)">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+        <title>{{detail}}</title>
+        <polygon v-if="type == 'cursor'" :style="iconColor" points="13.29 44.41 25.48 32.37 42.51 32.37 13.29 3 13.29 44.41"/>
+        <path v-if="type == 'key'" :style="iconColor" d="M42,46H8.05A4,4,0,0,1,4,42V8.05A4,4,0,0,1,8.05,4H42a4,4,0,0,1,4,4.05V42A4,4,0,0,1,42,46ZM29.57,29.11,32.23,37h3.44L27.17,12H23.28L14.82,37h3.32l2.59-7.84ZM21.4,26.59l2.44-7.21c.48-1.51.89-3,1.25-4.51h.08c.37,1.44.74,2.92,1.29,4.55l2.44,7.17Z"/>
+        <path v-if="type == 'user'" :style="iconColor" d="M34,16a9,9,0,1,1-9-9A9,9,0,0,1,34,16Zm8.06,25.74-2.41-8.43A8.72,8.72,0,0,0,31.27,27H18.73a8.72,8.72,0,0,0-8.38,6.31L7.94,41.74A2.55,2.55,0,0,0,10.39,45H39.61A2.55,2.55,0,0,0,42.06,41.74Z"/>
+        <path v-if="type == 'listener'" :style="iconColor" d="M19,17H9V7H19ZM31,7V17H41V7Zm0,14a6,6,0,0,1-6,6,6,6,0,0,1-6-6V19H9v8a16,16,0,0,0,32,0V19H31Z"/>
+        <path v-if="type == 'sender'" :style="iconColor" d="M34.76,22.47h-6.4a1.18,1.18,0,0,1-1.11-1.56L32.57,5.55a.47.47,0,0,0-.81-.45L15.14,26.27a1.22,1.22,0,0,0,1,2h6.36a1.18,1.18,0,0,1,1.11,1.57L18.33,44.45a.48.48,0,0,0,.82.45L35.7,24.45A1.22,1.22,0,0,0,34.76,22.47Z"/>
+        <path v-if="type == 'cancel'"  :style="iconColor" d="M29.24,25,41.12,13.12a3,3,0,0,0-4.24-4.24L25,20.76,13.12,8.88a3,3,0,0,0-4.24,4.24L20.76,25,8.88,36.88a3,3,0,0,0,0,4.24,3,3,0,0,0,4.24,0L25,29.24,36.88,41.12a3,3,0,0,0,4.24,0,3,3,0,0,0,0-4.24Z"/>
+        <path v-if="type == 'favorite'"  :style="iconColor" d="M25,43.75,8.38,27.13A11.5,11.5,0,0,1,24.65,10.87l.35.35.35-.35A11.5,11.5,0,0,1,41.62,27.13Z"/>
+        <path v-if="type == 'infi'"  :style="iconColor" d="M35.5,34.92a9.93,9.93,0,0,1-7-2.9L25,28.54,21.52,32a9.93,9.93,0,1,1,0-14L25,21.46,28.48,18a9.93,9.93,0,1,1,7,16.94Zm-7-9.92L32,28.48a4.92,4.92,0,1,0,0-7Zm-14-4.92A4.92,4.92,0,1,0,18,28.48L21.46,25,18,21.52A4.91,4.91,0,0,0,14.5,20.08Z"/>
+        <path v-if="type == 'download'"  :style="iconColor" d="M40.5,39v5H8.5V39ZM37.58,22.58l-3.53-3.53-7,7V5.5H22V26.09l-7-7-3.53,3.53L24.5,35.66Z"/>
+      </svg>
+    </div>
+  `,
+    data() {
+        return {
+            hover: false,
         }
     },
-    mounted() {
-        if (this.name == 'download')
-            console.log(this.$el)
-        // console.log(`icon is ${this.name}`)
+    computed: {
+        iconColor: function () {
+            if (this.$root.isWake) {
+                if (this.hover) {
+                    return `fill: ${this.$root.getCSS('color-selection')}`;
+                } else {
+                    return `fill: ${this.$root.getCSS('color-icon')}`;
+                }
+            } else {
+                return `fill: ${this.$root.getCSS('color-text-disabled')}`;
+            }
+        }
+    },
+    methods: {
+        testBtn(type) {
+            if (type == 'user') {
+                console.log('Home was clicked');
+                Event.$emit('submitLink', this.$root.homepage);
+            }
+        }
     }
 })
 

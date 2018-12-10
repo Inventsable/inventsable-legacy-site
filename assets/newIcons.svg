@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #d60d0d;
+      }
+
+      .cls-3 {
+        stroke: #d60d0d;
+        stroke-miterlimit: 10;
+        stroke-width: 5px;
+      }
+    </style>
+  </defs>
+  <title>newIcons</title>
+  <g id="frame">
+    <rect class="cls-1" width="50" height="50"/>
+  </g>
+  <g id="icon">
+    <path id="favorite" class="cls-2" d="M25,43.75,8.38,27.13A11.5,11.5,0,0,1,24.65,10.87l.35.35.35-.35A11.5,11.5,0,0,1,41.62,27.13Z"/>
+    <path id="infi" class="cls-3" d="M25,25l-5.25,5.25a7.42,7.42,0,0,1-10.5,0h0a7.42,7.42,0,0,1,0-10.5h0a7.42,7.42,0,0,1,10.5,0L25,25l5.25-5.25a7.42,7.42,0,0,1,10.5,0h0a7.42,7.42,0,0,1,0,10.5h0a7.42,7.42,0,0,1-10.5,0Z"/>
+    <path id="download" class="cls-2" d="M40.5,39v5H8.5V39ZM37.58,22.58l-3.53-3.53-7,7V5.5H22V26.09l-7-7-3.53,3.53L24.5,35.66Z"/>
+  </g>
+</svg>

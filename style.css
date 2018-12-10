@@ -6,14 +6,34 @@
     --toolbar-h: 40px;  /* not in use */
     --banner-h: 800px;  /* not in use */
 
-    --color-title-blue: rgb(60, 100, 194);
-    --color-border: rgb(225, 225, 225);
-    --color-white: rgb(255, 255, 255);
-    --color-bg: rgb(243, 243, 243);
-    --color-deep: rgb(14, 30, 37);
-    --color-tab-active: rgb(34, 153, 144);
-    --color-tab-fade: rgba(34, 153, 144, .35);
+    --color-bg: #323232;
+    --color-preview-bg: #232323;
+    --color-toolbar: #323232;
+    --color-icon: #a1a1a1;
+    --color-border: #3e3e3e;
+    --color-scrollbar: #2a2a2a;
+    --color-scrollbar-thumb: #3e3e3e;
+    --color-scrollbar-thumb-hover: #525252;
+    --color-button-hover: #292929;
+    --color-button-active: #1f1f1f;
+    --color-button-disabled: #393939;
+    --color-selection: #46a0f5;
+    --color-text-active: #1b1b1b;
+    --color-text-default: #a1a1a1;
+    --color-text-disabled: #525252;
+    --color-input-focus: #fcfcfc;
+    --color-input-idle: #262626;
+    --scrollbar-thumb-width: 20px;
+    --scrollbar-thumb-radius: 20px;
+    --color-tab-active: #46a0f5;
+    --color-tab-fade: #b7b7b7;
 
+    /* --color-border: rgb(225, 225, 225);
+    --color-white: rgb(255, 255, 255);
+    --color-bg: rgb(243, 243, 243); */
+    --color-deep: rgb(14, 30, 37);
+    /* --color-tab-active: rgb(34, 153, 144);
+    --color-tab-fade: rgba(34, 153, 144, .35); */
     --color-ILST-stroke: #FF7D02;
     --color-ILST-fill: #261300;
     --color-PHXS-stroke: #01CBFF;
@@ -22,14 +42,17 @@
     --color-AEFT-fill: #1F003F;
     --color-AUDT-stroke: #00E9C0;
     --color-AUDT-fill: #002620;
-
     --color-stable: #43a047;
     --color-unstable: #f9a825;
     --color-fail: #e64a19;
     --color-unknown: #0277bd;
 
-    --color-text-title: rgb(28, 64, 89);
-    --color-text-sub: rgb(5, 45, 73);
+    /* --color-text-title: rgb(28, 64, 89); */
+    /* --color-text-sub: rgb(5, 45, 73); */
+    --color-text-title: #b7b7b7;
+    --color-text-title-bg: #232323;
+    --color-text-sub: #b7b7b7;
+    color: #b7b7b7;
     font-size: 12px;
     --grid-gap: 1%;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
@@ -39,6 +62,22 @@
 
 svg {
     width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 1.125rem;
+  background: var(--color-scrollbar);
+}
+::-webkit-scrollbar-thumb {
+  width: var(--thumb-width);
+  background: var(--color-scrollbar-thumb);
+  border-radius: var(--scrollbar-thumb-radius);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-scrollbar-thumb-hover);
+}
+::-webkit-scrollbar-corner, ::-webkit-scrollbar-resizer, ::-webkit-scrollbar-button {
+  display: none;
 }
 
 .frame {
@@ -102,14 +141,20 @@ svg {
 }
 
 [class^="preview-links-"]:any-link {
-    color: var(--color-text-sub);
+    color: var(--color-icon);
     cursor: pointer;
     text-decoration: none;
+    transition: all 80ms var(--quad) 20ms;
+
+}
+
+[class^="preview-links-"]:any-link {
+    /* color: var(--color-selection); */
 }
 
 .preview-wrapper {
     width: 100%;
-    background-color: rgba(5, 5, 5, 0.2);
+    background-color: var(--color-preview-bg);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,8 +180,9 @@ svg {
     padding: 0px .5rem;
     border-style: solid;
     border-color: var(--color-border);
-    box-shadow: rgba(5, 5, 5, 0.065) 0px 2px 0px 0px;
-	background-color: rgb(255, 255, 255);
+    /* box-shadow: rgba(5, 5, 5, 0.065) 0px 2px 0px 0px; */
+    box-shadow: var(--color-border) 0px 2px 0px 0px;
+	background-color: var(--color-toolbar);
     z-index: 10;
     display: flex;
     flex-wrap: nowrap;
@@ -167,6 +213,10 @@ svg {
                 color 80ms var(--quint) 20ms,
      background-color 80ms var(--quint) 20ms;
 }
+.icon {
+    width: 3rem;
+    height: 3rem;
+}
 
 .tab-body:hover > .tab-main-idle {
     color: var(--color-tab-fade);
@@ -190,7 +240,6 @@ svg {
     width: calc(var(--toolbar-h) - 4px);
     height: calc(var(--toolbar-h) - 4px);
     border-radius: 1rem;
-    background-image: url("https://i.imgur.com/eryxWD2.gif");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -226,14 +275,12 @@ svg {
     align-items: center;
 }
 
-.banner-title {
+/* .banner-title {
     font-family: 'Bree-Serif';
     position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    /* display: grid; */
-    /* grid-template-columns: 10fr 1fr; */
     font-size: 11rem;
     color: white;
     width: 100%;
@@ -274,7 +321,6 @@ svg {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* margin-top: .5rem; */
 }
 
 
@@ -320,7 +366,7 @@ svg {
        -moz-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
 	    transform: translate(-50%, -50%);
-}
+} */
 
 .content {
 	position: absolute;
@@ -411,6 +457,7 @@ svg {
 }
 
 .detail-subtitle {
+    background-color: var(--color-text-title-bg);
     font-size: 2rem;
     padding: .5rem .5rem 1rem .5rem;
 }
@@ -445,19 +492,24 @@ li {
 
 .preview-links {
     width: 100%;
-    background-color: var(--color-bg);
     display: grid;
     grid-template-rows: repeat(2, 1fr);
-    grid-row-gap: .4rem;
+    grid-row-gap: .5rem;
+    grid-column-gap: .5rem;
 }
 
 [class^="preview-links-"] {
-    background-color: white;
-    
+    background-color: transparent;
+    background-color: var(--color-button-disabled);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
+
+}
+
+[class^="preview-links-"]:hover {
+    background-color: var(--color-button-hover);
 }
 
 
