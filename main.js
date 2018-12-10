@@ -309,9 +309,9 @@ Vue.component('preview-app', {
             <div class="card-header">
                 <div class="preview-icon">
                     <placeholder 
-                        :name="((winW > 408) || (winW < 249)) ? '80x80' : '40x40'"
-                        :w="((winW > 408) || (winW < 249)) ? '80' : '40'"
-                        :h="((winW > 408) || (winW < 249)) ? '80' : '40'" />
+                        :name="((winW > 409) || (winW < 249)) ? '80x80' : '40x40'"
+                        :w="((winW > 409) || (winW < 249)) ? '80' : '40'"
+                        :h="((winW > 409) || (winW < 249)) ? '80' : '40'" />
                 </div>
                 <div class="preview-title">
                     <div class="preview-title-top">
