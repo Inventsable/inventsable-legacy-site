@@ -3,7 +3,7 @@
     --quad: cubic-bezier(0.48, 0.04, 0.52, 0.96);
     --quint: cubic-bezier(0.84, 0.00, 0.16, 1.00);
 
-    --toolbar-h: 40px;  /* not in use */
+    --toolbar-h: 30px;  /* not in use */
     --banner-h: 800px;  /* not in use */
 
     --color-bg: #323232;
@@ -208,7 +208,7 @@ svg {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1rem;
     transition: 
                 color 80ms var(--quint) 20ms,
      background-color 80ms var(--quint) 20ms;
@@ -595,8 +595,8 @@ li {
     }
 
     .logo {
-        width: 26px;
-        height: 26px;
+        /* width: 26px;
+        height: 26px; */
     }
 
     .tab-body, .header {
