@@ -307,6 +307,12 @@ Vue.component('preview-app', {
     template: `
         <div class="preview-main">
             <div class="card-header">
+                <div class="preview-icon">
+                    <placeholder 
+                        :name="((winW > 408) || (winW < 249)) ? '80x80' : '40x40'"
+                        :w="((winW > 408) || (winW < 249)) ? '80' : '40'"
+                        :h="((winW > 408) || (winW < 249)) ? '80' : '40'" />
+                </div>
                 <div class="preview-title">
                     <div class="preview-title-top">
                         <div class="preview-title-main">{{model.name}}</div>
@@ -349,20 +355,23 @@ Vue.component('preview-app', {
         }
     },
     computed: {
+        winW: function() {
+            return this.$root.w;
+        },
         buildNumber: function() {
             let match = this.model.file.match(/\d\.\d{2}(?=\.zxp)/);
             return match[0];
         },
         authors: function () {
             if (this.model.patron.length) {
-                return `${this.model.patron} and Tom Scharstein`
+                return `${this.model.patron} and me`
             } else {
-                return `Tom Scharstein`
+                return `me`
             }
         },
         details: function () {
             if (this.model.details.length) {
-                // return `${this.model.details.join(',')} and Tom Scharstein`
+                // return `${this.model.details.join(',')} and me`
             // } else {
                 return this.model.details;
             }
@@ -381,10 +390,15 @@ Vue.component('placeholder', {
         name: String,
     },
     template: `
-        <div :style="getPlaceholderStyle()"></div>
+        <div :style="getPlaceholderStyle()" :class="getPlaceholderClass()"></div>
     `,
     methods: {
         getPlaceholderStyle() {
+            // let altUrl = 'https://via.placeholder.com/150/0000FF/808080 ?Text=Digital.com C/O https://placeholder.com/'
+            let url = `https://via.placeholder.com/${this.w}x${this.h}/434343/b7b7b7?text=${this.name}`;
+            return `width:${this.w}px;height:${this.h}px;background: url('${url}') center center / contain no-repeat;`;
+        },
+        getPlaceholderClass() {
             // let altUrl = 'https://via.placeholder.com/150/0000FF/808080 ?Text=Digital.com C/O https://placeholder.com/'
             let url = `https://via.placeholder.com/${this.w}x${this.h}/434343/b7b7b7?text=${this.name}`;
             return `width:${this.w}px;height:${this.h}px;background: url('${url}') center center / contain no-repeat;`;

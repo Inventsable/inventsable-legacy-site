@@ -381,6 +381,7 @@ svg {
 
 
 .preview-list {
+    user-select: none;
     box-sizing: border-box;
     /* border: 2px solid blue; */
     margin-top: 1rem;
@@ -402,7 +403,7 @@ svg {
     /* border-radius: 10px; */
     margin-bottom: 5rem;
     padding-bottom: 5rem;
-    box-shadow: rgba(5, 5, 5, 0.065) 0px 2px 0px 0px;
+    box-shadow: var(--color-border) 0px 2px 0px 0px;
 }
 
 .preview-title-main {
@@ -445,7 +446,7 @@ svg {
 
 .card-header {
     display: grid;
-    /* grid-template-columns: 2fr 0fr; */
+    grid-template-columns: 1fr 4fr;
 }
 
 .preview-body {
@@ -468,6 +469,14 @@ svg {
 }
 li {
     margin: .5rem 0px;
+}
+
+.preview-icon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .preview-visuals {
@@ -516,7 +525,6 @@ li {
 @media screen 
     and (orientation: landscape)
     and (max-width:760px) {
-    
     /* .banner {
         background: url('https://thumbs.gfycat.com/ThatThirdHumpbackwhale-size_restricted.gif') center center / cover no-repeat;
         height: 310px;
@@ -565,13 +573,19 @@ li {
 
 @media only screen 
     /* and (orientation: portrait) */
-    and (max-width:400px) {
+    and (max-width:420px) {
     .content {
            /* top: var(-); */
         top: 30px;
     }
     .preview-title {
         grid-template-rows: 1fr 1fr;
+    }
+    .preview-title-main {
+        font-size: 2rem;
+    }
+    .preview-title-sub {
+        font-size: 1.5rem;
     }
     .fullscreen-bg__video {
         display: none;
@@ -598,7 +612,7 @@ li {
     }
     .preview-body {
         grid-template-columns: 1fr;
-        grid-template-rows: 3fr 3fr;
+        grid-template-rows: 3fr 2fr;
         grid-row-gap: .5rem;
     }
     .preview-main {
@@ -606,7 +620,7 @@ li {
     }
 
     .detail-subtitle {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
         /* padding: .5rem .5rem 1rem .5rem; */
     }
 
@@ -620,3 +634,25 @@ li {
 
 }
 
+@media only screen 
+    /* and (orientation: portrait) */
+    and (max-width:260px) {
+    .preview-icon {
+        width: 100%;
+    }
+    .preview-title-top {
+        /* display: flex; */
+        align-items: flex-end;
+        justify-content: center;
+    }
+    .preview-title-sub {
+        /* display: flex; */
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .card-header {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
