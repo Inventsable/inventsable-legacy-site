@@ -14,8 +14,43 @@ Vue.component('site', {
     data() {
         return {
             alt: true,
-            msg: 'Hello app',
+            msg: 'Welcome to my domain',
             panels: [
+                {
+                    name: 'protoBrowser',
+                    patron: [],
+                    details: 'Web browser',
+                    features: ['Homepage is free panel hub',
+                               'See updates for all related panels',
+                               'Show/hide source toolbar'],
+                    file: 'builds/protoBrowser1.00.zxp',
+                    links: {
+                        github: 'https://github.com/Inventsable/protoBrowser',
+                        demo: 'https://github.com/Inventsable/protoBrowser',
+                    },
+                    range: '2017+',
+                    apps: [
+                        { appName: 'ILST', status: 'stable' },
+                    ],
+                },
+                {
+                    name: 'protoDebug',
+                    patron: [],
+                    details: 'Debug utility',
+                    features: ['Logs all user input',
+                        'Display system information', 
+                        'Share data with other panels', 
+                        `Responds to console.log() in JSX`],
+                    file: 'builds/protoDebug1.02.zxp',
+                    links: {
+                        github: 'https://github.com/Inventsable/protoDebug',
+                        demo: 'https://github.com/Inventsable/protoDebug',
+                    },
+                    range: '2017+',
+                    apps: [
+                        { appName: 'ILST', status: 'stable' },
+                    ],
+                },
                 {
                     name: 'Color History',
                     patron: ['Jiesi Huang'],
@@ -36,12 +71,18 @@ Vue.component('site', {
                 {
                     name: 'Scribe',
                     patron: ['r/AdobeIllustrator'],
-                    details: 'Dynamic colors swatches with recent history',
-                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                    details: 'Layer renaming utility',
+                    features: [
+                        'Submit new layer name with Enter',
+                        'Nagivate layers with arrow keys',
+                        'Layer/Artboard name toggle',
+                        'Prefix/suffix injection',
+                        `Auto-delete ' copy' from names`
+                    ],
                     file: 'builds/Scribe1.01.zxp',
                     links: {
-                        github: 'https://github.com/Inventsable/protoColors',
-                        demo: 'https://github.com/Inventsable/protoColors',
+                        github: 'https://github.com/Inventsable/Scribe',
+                        demo: 'https://github.com/Inventsable/Scribe',
                     },
                     range: '2017+',
                     apps: [
@@ -53,7 +94,12 @@ Vue.component('site', {
                     name: 'Smart Align',
                     patron: ['Herman van Boeijen'],
                     details: 'Dynamic colors swatches with recent history',
-                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                    features: [
+                            'Real-time selection detection',
+                            'GUI for extended Align To positions',
+                            'If one object selected, align to artboard',
+                            'If multiple objects selected, align to selection', 
+                            'Scrunch together function'],
                     file: 'builds/Smart-Align1.01.zxp',
                     links: {
                         github: 'https://github.com/Inventsable/protoColors',
@@ -67,8 +113,10 @@ Vue.component('site', {
                 {
                     name: 'Nimbling SSR 30',
                     patron: ['Herman van Boeijen'],
-                    details: 'Dynamic colors swatches with recent history',
-                    features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
+                    details: 'GUI for isometric angles',
+                    features: [
+                        'Modular scale-shear-rotate actions', 
+                    ],
                     file: 'builds/axo1.00.zxp',
                     links: {
                         github: 'https://github.com/Inventsable/axo',
@@ -339,10 +387,10 @@ Vue.component('preview-app', {
                     </div>
                     <div class="preview-links">
                         <a class="preview-links-L" :href="model.file" download>
-                             <icon type="download" detail="Download as a .ZXP"></icon>
+                             <icon haslink="false" samewindow="true" type="download" detail="Download as a .ZXP"></icon>
                         </a>
                         <a class="preview-links-R" :href="model.links.github" target="_blank">
-                            <icon type="user" detail="Go to Github"></icon>
+                            <icon haslink="true" samewindow="false" :link="model.links.github" type="github" detail="Go to Github"></icon>
                         </a>
                     </div>
                 </div>
@@ -378,8 +426,8 @@ Vue.component('preview-app', {
         }
     },
     mounted() {
-        console.log('Previewing:')
-        console.log(this.model)
+        // console.log('Previewing:')
+        // console.log(this.model)
     }
 })
 
@@ -413,10 +461,15 @@ Vue.component('icon', {
         parent: String,
         which: String,
         canceller: String,
+        haslink: String,
+        link: String,
+        samewindow: String,
     },
     template: `
-    <div 
+    <a 
       :class="type == 'cancel' ? 'icon-cancel' : 'icon'" 
+      :href="haslink == 'true' ? link : ''"
+      :target="samewindow !== 'true' ? '_blank' : ''"
       @mouseover="hover = true" 
       @mouseout="hover = false" 
       @click="testBtn(type)">
@@ -429,10 +482,12 @@ Vue.component('icon', {
         <path v-if="type == 'sender'" :style="iconColor" d="M34.76,22.47h-6.4a1.18,1.18,0,0,1-1.11-1.56L32.57,5.55a.47.47,0,0,0-.81-.45L15.14,26.27a1.22,1.22,0,0,0,1,2h6.36a1.18,1.18,0,0,1,1.11,1.57L18.33,44.45a.48.48,0,0,0,.82.45L35.7,24.45A1.22,1.22,0,0,0,34.76,22.47Z"/>
         <path v-if="type == 'cancel'"  :style="iconColor" d="M29.24,25,41.12,13.12a3,3,0,0,0-4.24-4.24L25,20.76,13.12,8.88a3,3,0,0,0-4.24,4.24L20.76,25,8.88,36.88a3,3,0,0,0,0,4.24,3,3,0,0,0,4.24,0L25,29.24,36.88,41.12a3,3,0,0,0,4.24,0,3,3,0,0,0,0-4.24Z"/>
         <path v-if="type == 'favorite'"  :style="iconColor" d="M25,43.75,8.38,27.13A11.5,11.5,0,0,1,24.65,10.87l.35.35.35-.35A11.5,11.5,0,0,1,41.62,27.13Z"/>
+        <path v-if="type == 'home'"  :style="iconColor" d="M35.5,34.92a9.93,9.93,0,0,1-7-2.9L25,28.54,21.52,32a9.93,9.93,0,1,1,0-14L25,21.46,28.48,18a9.93,9.93,0,1,1,7,16.94Zm-7-9.92L32,28.48a4.92,4.92,0,1,0,0-7Zm-14-4.92A4.92,4.92,0,1,0,18,28.48L21.46,25,18,21.52A4.91,4.91,0,0,0,14.5,20.08Z"/>
         <path v-if="type == 'infi'"  :style="iconColor" d="M35.5,34.92a9.93,9.93,0,0,1-7-2.9L25,28.54,21.52,32a9.93,9.93,0,1,1,0-14L25,21.46,28.48,18a9.93,9.93,0,1,1,7,16.94Zm-7-9.92L32,28.48a4.92,4.92,0,1,0,0-7Zm-14-4.92A4.92,4.92,0,1,0,18,28.48L21.46,25,18,21.52A4.91,4.91,0,0,0,14.5,20.08Z"/>
         <path v-if="type == 'download'"  :style="iconColor" d="M40.5,39v5H8.5V39ZM37.58,22.58l-3.53-3.53-7,7V5.5H22V26.09l-7-7-3.53,3.53L24.5,35.66Z"/>
+        <path v-if="type == 'github'"  :style="iconColor" d="M25,3.21A20.91,20.91,0,0,0,18.39,44c1,.18,1.43-.44,1.43-1s0-2.15,0-3.9c-5.26,1-6.61-1.28-7-2.45a7.64,7.64,0,0,0-2.15-3c-.73-.39-1.77-1.36,0-1.38s2.82,1.51,3.21,2.14a4.47,4.47,0,0,0,6.09,1.72,4.39,4.39,0,0,1,1.34-2.79C16.58,32.83,11.72,31,11.72,23a8.13,8.13,0,0,1,2.15-5.62,7.48,7.48,0,0,1,.2-5.54s1.76-.55,5.75,2.15a19.62,19.62,0,0,1,10.46,0c4-2.72,5.75-2.15,5.75-2.15a7.5,7.5,0,0,1,.21,5.54A8.11,8.11,0,0,1,38.38,23c0,8-4.89,9.81-9.54,10.33a4.94,4.94,0,0,1,1.41,3.87c0,2.79,0,5,0,5.75,0,.55.39,1.2,1.44,1A20.92,20.92,0,0,0,25,3.21Z"/>
       </svg>
-    </div>
+    </a>
   `,
     data() {
         return {
@@ -454,7 +509,7 @@ Vue.component('icon', {
     },
     methods: {
         testBtn(type) {
-            if (type == 'user') {
+            if (type == 'infi') {
                 console.log('Home was clicked');
                 Event.$emit('submitLink', this.$root.homepage);
             }
