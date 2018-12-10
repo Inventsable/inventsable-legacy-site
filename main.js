@@ -398,7 +398,9 @@ Vue.component('icon', {
         }
     },
     mounted() {
-        console.log(`icon is ${this.name}`)
+        if (this.name == 'download')
+            console.log(this.$el)
+        // console.log(`icon is ${this.name}`)
     }
 })
 
