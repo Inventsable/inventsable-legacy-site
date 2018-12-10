@@ -607,7 +607,7 @@ li {
     }
     .preview-body-R {
         grid-template-columns: 1fr;
-        grid-template-rows: 2fr 1fr;
+        grid-template-rows: 2fr 2.5fr;
 
     }
     .preview-body {
@@ -636,6 +636,10 @@ li {
     and (max-width:260px) {
     .preview-icon {
         width: 100%;
+    }
+
+    .preview-body {
+        grid-template-rows: 3fr 2fr;
     }
     .preview-title-top {
         /* display: flex; */
