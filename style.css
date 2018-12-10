@@ -550,7 +550,7 @@ li {
     }
 
     [class^="tab-main"] {
-        font-size: 1rem;
+        /* font-size: 1rem; */
     }
 
     .content {
@@ -612,7 +612,7 @@ li {
     }
     .preview-body {
         grid-template-columns: 1fr;
-        grid-template-rows: 3fr 2fr;
+        /* grid-template-rows: 3fr 2fr; */
         grid-row-gap: .5rem;
     }
     .preview-main {
@@ -639,7 +639,7 @@ li {
     }
 
     .preview-body {
-        grid-template-rows: 3fr 2fr;
+        /* grid-template-rows: 3fr 2fr; */
     }
     .preview-title-top {
         /* display: flex; */
