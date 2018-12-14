@@ -24,6 +24,8 @@ protoDebug (as many apps as possible)
 
 # DrawYourOwnMenu
 
+* Modular dialogue handles all options
+
 * Build for multiple panes
 * Prompt for toolbar
 * Input for Action Group
@@ -34,3 +36,7 @@ protoDebug (as many apps as possible)
 * Allow sources from FontAwesome and free fonts
 * New button is made from selection
 * Radio control if color or if monochrome
+
+# TenSecondTutorials
+
+* Use components that fetch a URL and list that builds from a fetched JSON -- specifically working from a mastersheet on the website.

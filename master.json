@@ -1,0 +1,47 @@
+{
+    "global": {
+        "updateMessage": "A new version is available"
+    },
+    "master": {
+        "protoBrowser": {
+            "version": "1.00",
+            "details" : [
+
+            ]
+        },
+        "protoDebug": {
+            "version": "1.03",
+            "details" : [
+                "Dynamic linking",
+                "console.log() support for JSX",
+                "Panel update notifications"
+            ],
+            "preview" : "https://via.placeholder.com/960x540/434343/b7b7b7"
+        },
+        "protoColors": {
+            "version": "1.05",
+            "details" : [
+
+            ]
+        },
+        "protoScribe": {
+            "version": "1.01",
+            "details" : [
+
+            ]
+        },
+        "mightyFolders": {
+            "version": "1.00",
+            "details" : [
+
+            ]
+        },
+    },
+    "extensionList": [
+        "protoBrowser",
+        "protoDebug",
+        "protoColors",
+        "protoScribe",
+        "mightyFolders"
+    ]
+}
