@@ -11,9 +11,9 @@
             ]
         },
         "protoDebug": {
-            "data": "new update available",                        
+            "data": "Update is available",                        
             "version": "1.03",
-            "details": "Includes new features",
+            "details": "includes new features",
             "notes" : [
                 "Dynamic linking",
                 "console.log() support for JSX",
