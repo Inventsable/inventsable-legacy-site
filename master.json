@@ -6,7 +6,7 @@
         "protoBrowser": {
             "data": "Update is available",
             "version": "1.00",
-            "details": "includes new features:",
+            "details": "has new features:",
             "notes": [
                 "dummy text"
             ],
@@ -15,7 +15,7 @@
         "protoDebug": {
             "data": "Update is available",                        
             "version": "1.03",
-            "details": "includes new features:",
+            "details": "has new features:",
             "notes" : [
                 "Dynamic linking",
                 "console.log() support for JSX",
@@ -26,7 +26,7 @@
         "protoColors": {
             "data": "Update is available",                        
             "version": "1.05",
-            "details": "includes new features:",
+            "details": "has new features:",
             "notes": [
                 "Dynamic linking",
                 "console.log() support for JSX",
@@ -37,7 +37,7 @@
         "protoScribe": {
             "data": "Update is available",                        
             "version": "1.01",
-            "details": "includes new features:",
+            "details": "has new features:",
             "notes": [
                 "Dynamic linking",
                 "console.log() support for JSX",
@@ -48,7 +48,7 @@
         "mightyFolders": {
             "data": "Update is available",                        
             "version": "1.00",
-            "details": "includes new features:",
+            "details": "has new features:",
             "notes": [
                 "Dynamic linking",
                 "console.log() support for JSX",
