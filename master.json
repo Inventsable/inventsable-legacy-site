@@ -6,7 +6,7 @@
         "protoBrowser": {
             "version": "1.00",
             "details" : [
-
+                "none"
             ]
         },
         "protoDebug": {
@@ -20,22 +20,22 @@
         },
         "protoColors": {
             "version": "1.05",
-            "details" : [
-
+            "details": [
+                "none"
             ]
         },
         "protoScribe": {
             "version": "1.01",
-            "details" : [
-
+            "details": [
+                "none"
             ]
         },
         "mightyFolders": {
             "version": "1.00",
-            "details" : [
-
+            "details": [
+                "none"
             ]
-        },
+        }
     },
     "extensionList": [
         "protoBrowser",
