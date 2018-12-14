@@ -4,14 +4,17 @@
     },
     "master": {
         "protoBrowser": {
+            "data": "new update available",
             "version": "1.00",
-            "details" : [
+            "notes" : [
                 "none"
             ]
         },
         "protoDebug": {
+            "data": "new update available",                        
             "version": "1.03",
-            "details" : [
+            "details": "Includes new features",
+            "notes" : [
                 "Dynamic linking",
                 "console.log() support for JSX",
                 "Panel update notifications"
@@ -19,20 +22,23 @@
             "preview" : "https://via.placeholder.com/960x540/434343/b7b7b7"
         },
         "protoColors": {
+            "data": "new update available",
             "version": "1.05",
-            "details": [
+            "notes": [
                 "none"
             ]
         },
         "protoScribe": {
+            "data": "new update available",
             "version": "1.01",
-            "details": [
+            "notes": [
                 "none"
             ]
         },
         "mightyFolders": {
+            "data": "new update available",
             "version": "1.00",
-            "details": [
+            "notes": [
                 "none"
             ]
         }
