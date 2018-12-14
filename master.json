@@ -4,16 +4,18 @@
     },
     "master": {
         "protoBrowser": {
-            "data": "new update available",
+            "data": "Update is available",
             "version": "1.00",
-            "notes" : [
-                "none"
-            ]
+            "details": "includes new features:",
+            "notes": [
+                "dummy text"
+            ],
+            "preview": "https://via.placeholder.com/960x540/434343/b7b7b7"
         },
         "protoDebug": {
             "data": "Update is available",                        
             "version": "1.03",
-            "details": "includes new features",
+            "details": "includes new features:",
             "notes" : [
                 "Dynamic linking",
                 "console.log() support for JSX",
@@ -22,25 +24,37 @@
             "preview" : "https://via.placeholder.com/960x540/434343/b7b7b7"
         },
         "protoColors": {
-            "data": "new update available",
+            "data": "Update is available",                        
             "version": "1.05",
+            "details": "includes new features:",
             "notes": [
-                "none"
-            ]
+                "Dynamic linking",
+                "console.log() support for JSX",
+                "Panel update notifications"
+            ],
+            "preview": "https://via.placeholder.com/960x540/434343/b7b7b7"
         },
         "protoScribe": {
-            "data": "new update available",
+            "data": "Update is available",                        
             "version": "1.01",
+            "details": "includes new features:",
             "notes": [
-                "none"
-            ]
+                "Dynamic linking",
+                "console.log() support for JSX",
+                "Panel update notifications"
+            ],
+            "preview": "https://via.placeholder.com/960x540/434343/b7b7b7"
         },
         "mightyFolders": {
-            "data": "new update available",
+            "data": "Update is available",                        
             "version": "1.00",
+            "details": "includes new features:",
             "notes": [
-                "none"
-            ]
+                "Dynamic linking",
+                "console.log() support for JSX",
+                "Panel update notifications"
+            ],
+            "preview": "https://via.placeholder.com/960x540/434343/b7b7b7"
         }
     },
     "extensionList": [
