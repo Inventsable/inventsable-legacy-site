@@ -1,5 +1,8 @@
 window.Event = new Vue();
 
+// This should fetch from the master JSON as well.
+// This deserves a full rebuild
+
 Vue.component('site', {
     template: `
         <div class="fullsite">
