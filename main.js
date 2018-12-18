@@ -41,7 +41,7 @@ Vue.component('site', {
                         'Display system information', 
                         'Share data with other panels', 
                         `Responds to console.log() in JSX`],
-                    file: 'builds/protoDebug1.02.zxp',
+                    file: 'builds/protoDebug1.05.zxp',
                     links: {
                         github: 'https://github.com/Inventsable/protoDebug',
                         demo: 'https://github.com/Inventsable/protoDebug',
