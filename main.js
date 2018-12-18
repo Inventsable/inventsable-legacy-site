@@ -52,7 +52,7 @@ Vue.component('site', {
                     ],
                 },
                 {
-                    name: 'Color History',
+                    name: 'protoColors',
                     patron: ['Jiesi Huang'],
                     details: 'Dynamic colors swatches with recent history',
                     features: ['Real-time detection', 'Sort by time/spectrum', 'Contextual select same fill/stroke'],
@@ -353,7 +353,7 @@ Vue.component('preview-app', {
         model: Object,
     },
     template: `
-        <div class="preview-main">
+        <a :id="model.name" class="preview-main">
             <div class="card-header">
                 <div class="preview-icon">
                     <placeholder 
@@ -395,7 +395,7 @@ Vue.component('preview-app', {
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     `,
     data() {
         return {
@@ -403,6 +403,10 @@ Vue.component('preview-app', {
         }
     },
     computed: {
+        // realname: function() {
+        //     let str = this.model.name.toLowerCase();
+        //     return (str.test(/\s/)) ? str.replace(/\s/, '-') : str;
+        // },
         winW: function() {
             return this.$root.w;
         },

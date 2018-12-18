@@ -401,8 +401,8 @@ svg {
     min-height: 30px;
     width: 100%;
     /* border-radius: 10px; */
-    margin-bottom: 5rem;
-    padding-bottom: 5rem;
+    /* margin-bottom: 5rem; */
+    padding-top: 5rem;
     box-shadow: var(--color-border) 0px 2px 0px 0px;
 }
 
