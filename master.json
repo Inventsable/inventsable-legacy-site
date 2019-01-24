@@ -14,7 +14,7 @@
         },
         "protoDebug": {
             "data": "Update is available",                        
-            "version": "1.0.0",
+            "version": "1.04",
             "details": "has new features:",
             "notes" : [
                 "Dynamic linking",
