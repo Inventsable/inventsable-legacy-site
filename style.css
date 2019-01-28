@@ -20,6 +20,7 @@ svg { width: 100%; }
     fill: var(--color-bg);
 }
 
+
 .testAnno {
     font-size: 2rem;
     color: white;
@@ -60,6 +61,7 @@ svg { width: 100%; }
     box-sizing: border-box;
     height: 100vh;
 }
+
 
 .anim-red {
     width: 10rem;
